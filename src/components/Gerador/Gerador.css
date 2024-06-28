@@ -1,0 +1,28 @@
+.gerador{
+    width: 90%;
+    height: 90%;
+    max-width: 500px;
+    margin: auto auto;
+    background-color: rgba(187, 225, 250, 1);
+    padding: 5px 5px;
+    border-radius: 10px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+}
+.passcamp{
+    width: 90%;
+}
+.passThings{
+    display: flex;
+    flex-direction: row;
+    
+}
+.checkbox{
+    margin: 10px 5px;
+}
+.icon:hover{
+    
+}
