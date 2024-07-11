@@ -13,14 +13,11 @@ export async function pwnedCall(password: string) {
     const foundLine = lines.find(line => line.startsWith(hash));
     if (foundLine) {
       const [hash, count] = foundLine.split(":");
-      console.log(`Hash ${hash} encontrada com count: ${count}`);
       return`Hash ${hash} found with: ${count} records`;
     } else {
-      console.log(`Hash ${hash} não encontrada`);
       return"No records found";
     }
   } catch (error:any) {
-    console.error(error);
     return(error);
   }
 }
