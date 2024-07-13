@@ -1,30 +1,85 @@
-# React + TypeScript + Vite
+# The Passgerator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The passgerator web application developed with React, Typescript and Vite that generates random and secure passwords. The project is configured with with ESLint to maintain quality of code.
 
-Currently, two official plugins are available:
+# Index
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#Overview)
+- [Features](#Features)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Avaliable Scripts](#Avaliable%20Scripts)
+- [Project Structure](#Project%20Structure)
+- [Contributions](#Contributions)
+- [License](#LICENSE)
 
-## Expanding the ESLint configuration
+# Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The goal of The Passgerator is to provide a simple interface for generating secure passwords. The application allows users to configure the criteria for the generated passwords, such as length and inclusion of special characters.
 
-- Configure the top-level `parserOptions` property like this:
+# Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Generation of secure and random passwords.
+- Option to set password length.
+- Inclusion of special characters, numbers, upper and lower case letters.
+- Clean, friendly and easy to use interface.
+
+# Installation
+
+To install and run the project locally, follow the steps below:
+
+1. Clone the repository: 
+
+```
+git clone https://github.com/PHCavalcante/the-passgerator.git
+cd the-passgerator
+```
+2. Install the dependencies:
+```
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Usage
+
+To start the application in development mode, use the command:
+
+```
+npm run dev
+```
+
+# Avaliable Scripts
+
+- `` npm run dev `` Starts the application in development mode.
+- `` npm run lint `` Runs ESLint to check for code issues.
+
+# Project Structure
+```bash
+the-passgerator/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── services/
+│   ├── utils/
+│   ├── index.css
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+├── .eslintrc.js
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── viteconfig.json
+├── vite.config.ts
+```
+
+# Contributions
+
+Contributions are welcome! Feel free to open issues and pull requests. For more information, see the [contribution guidelines](.github\CONTRIBUTING.md).
+
+# License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
