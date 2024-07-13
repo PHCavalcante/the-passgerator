@@ -52,4 +52,9 @@
 .modalText{
     padding: 10px 10px;
     font-size: 20px;
+    text-align: center;
+}
+.modalButton{
+    width: 100;
+    align-self: center;
 }
