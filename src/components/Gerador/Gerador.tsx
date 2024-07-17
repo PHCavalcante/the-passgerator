@@ -61,37 +61,8 @@ function Gerador() {
       }, 2000);
     }
   };
-
-  /* Handles the lowercase checkbox boolean value */
-  const handleChangeLower = () => {
-    setLowerChecked((prevState) => {
-      const newState = !prevState;
-      return newState;
-    });
-  };
-  /* Handles the uppercase checkbox boolean value */
-  const handleChangeUpper = () => {
-    setUpperChecked((prevState) => {
-      const newState = !prevState;
-      return newState;
-    });
-  };
-  /* Handles the numbers checkbox boolean value */
-  const handleChangeNumber = () => {
-    setNumberChecked((prevState) => {
-      const newState = !prevState;
-      return newState;
-    });
-  };
-  /* Handles the symbols (special characters) checkbox boolean value */
-  const handleChangeSymbol = () => {
-    setSymbolChecked((prevState) => {
-      const newState = !prevState;
-      return newState;
-    });
-  };
   /* Handles the slider value */
-  const handleValue = (_event: any, value: any) => {
+  const handleValue = (_event: Event, value:any) => {
     setValue(value);
   };
   /* Handles the algorithms to close the snackbars */
@@ -176,7 +147,6 @@ function Gerador() {
                 placement="top"
               >
                 <span style={{ alignSelf: "center" }}>
-                  {" "}
                   {/* this span is just because MUI dont like tooltips in disabled elements */}
                   <IconButton
                     disabled={password.length <= 0 ? true : false}
@@ -255,7 +225,7 @@ function Gerador() {
                   control={
                     <Checkbox
                       checked={lowercasesChecked}
-                      onChange={handleChangeLower}
+                      onChange={() => setLowerChecked(!lowercasesChecked)}
                     />
                   }
                   label="Include Lowercases"
@@ -270,7 +240,7 @@ function Gerador() {
                   control={
                     <Checkbox
                       checked={uppercaseChecked}
-                      onChange={handleChangeUpper}
+                      onChange={() => setUpperChecked(!uppercaseChecked)}
                     />
                   }
                   label="Include Uppercases"
@@ -285,7 +255,7 @@ function Gerador() {
                   control={
                     <Checkbox
                       checked={numbersChecked}
-                      onChange={handleChangeNumber}
+                      onChange={() => setNumberChecked(!numbersChecked)}
                     />
                   }
                   label="Include Numbers"
@@ -300,7 +270,7 @@ function Gerador() {
                   control={
                     <Checkbox
                       checked={symbolsChecked}
-                      onChange={handleChangeSymbol}
+                      onChange={() => setSymbolChecked(!symbolsChecked)}
                     />
                   }
                   label="Include Symbols"

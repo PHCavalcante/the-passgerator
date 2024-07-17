@@ -17,7 +17,7 @@ export async function pwnedCall(password: string) {
     } else {
       return"No records found";
     }
-  } catch (error:any) {
-    return(error);
+  } catch (error:unknown) {
+    return(`Unexpected error:, ${error}`);
   }
 }

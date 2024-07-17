@@ -7,8 +7,7 @@ export function TimeToCrackIndicator(password: string) {
     return null;
   } else {
     let color = "";
-    let timeToCrack: any = checkPasswordStrength(password);
-    timeToCrack = timeToCrack[1];
+    const timeToCrack:string|undefined  = checkPasswordStrength(password).at(1);
     if (
       timeToCrack == "Instantly" ||
       timeToCrack == "1 second" ||

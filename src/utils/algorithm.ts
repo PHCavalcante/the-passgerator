@@ -164,17 +164,6 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 }
             }
             return password;
-        }else if(lowercaseChecked &&  !uppercaseChecked && !numbersChecked && symbolsChecked){
-            while(condition == 0){
-                password = "";
-                for (let x = 1; x<= range; x++){
-                    password += (chars + specialChars).charAt(Math.floor(Math.random() * (chars + specialChars).length));
-                }
-                if(hasLowercase() && hasSymbols()){
-                    condition = 1;
-                }
-            }
-            return password;
         }else if(!lowercaseChecked &&  !uppercaseChecked && numbersChecked && !symbolsChecked){
             while(condition == 0){
                 password = "";

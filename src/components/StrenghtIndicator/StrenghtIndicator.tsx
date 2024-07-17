@@ -3,9 +3,8 @@ import { checkPasswordStrength } from "../../utils/strenghtCheck";
 
 /* The function that changes the strenght color in the strenght indicator based in the password strenght */
 export function StrenghtIndicator(password: string) {
-  let strenght: any = checkPasswordStrength(password);
-  strenght = strenght[0];
-  let color =
+  const strenght:string|undefined = checkPasswordStrength(password).at(0);
+  const color =
   strenght == "Very weak"
     ? "red"
     : strenght == "weak"
