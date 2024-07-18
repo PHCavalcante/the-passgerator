@@ -17,7 +17,12 @@ export async function pwnedCall(password: string) {
     } else {
       return"No records found";
     }
-  } catch (error:unknown) {
-    return(`Unexpected error:, ${error}`);
+  }catch (error:unknown) {
+      if(error == "TypeError: fetch failed"){
+        return "Error: Please check your internet connection";
+      }
+      else{
+        return(`Unexpected error: ${error}`);
+      }
   }
 }

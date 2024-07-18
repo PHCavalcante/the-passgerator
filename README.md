@@ -22,6 +22,7 @@ The goal of The Passgerator is to provide a simple interface for generating secu
 - Generation of secure and random passwords.
 - Option to set password length.
 - Inclusion of special characters, numbers, upper and lower case letters.
+- Option to check whether the generated password has already been exposed in data breaches.
 - Clean, friendly and easy to use interface.
 
 # Installation

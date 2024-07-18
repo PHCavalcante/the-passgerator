@@ -197,6 +197,6 @@ export function checkPasswordStrength(
     key += "Numbers, Lowercase Letters, Symbols";
   }
   return (
-    strengthMatrix[key] || ["Very Strong", "∞"]
+    strengthMatrix[key] || ["Very strong", "∞"]
   );
 }
