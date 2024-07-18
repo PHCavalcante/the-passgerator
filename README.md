@@ -52,6 +52,7 @@ npm run dev
 
 - `` npm run dev `` Starts the application in development mode.
 - `` npm run lint `` Runs ESLint to check for code issues.
+- `` npm run test `` Runs the test files.
 
 # Project Structure
 ```bash
@@ -60,6 +61,7 @@ the-passgerator/
 │   ├── assets/
 │   ├── components/
 │   ├── services/
+│   ├── tests/
 │   ├── utils/
 │   ├── index.css
 │   ├── main.tsx
