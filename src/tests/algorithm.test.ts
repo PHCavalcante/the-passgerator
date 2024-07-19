@@ -3,10 +3,10 @@ import { algorithm } from "../utils/algorithm";
 describe("algorithm", () => {
     it("the password returned lenght shoud be the same as specified in paramenter", () => {
         const lenghtItShouldBe = 8;
-        expect(algorithm(true, true, true, true, lenghtItShouldBe).length).toBe(lenghtItShouldBe);
+        expect(algorithm(true, true, true, true, false,lenghtItShouldBe).length).toBe(lenghtItShouldBe);
     })
     it("the password should have all characters specified in the parameters", () => {
-        const password = algorithm(true, true, true ,true, 12);
+        const password = algorithm(true, true, true, true, false, 12);
 
         // Test only for Lowercases  
         // expect(password).toMatch(/[a-z]/);
