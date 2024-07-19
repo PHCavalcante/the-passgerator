@@ -41,6 +41,7 @@ function Gerador() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = React.useState(false);
   const [buttonStatus, SetButtonStatus] = useState(true);
+  const [avoidAmbiguousChecked, setAvoidAmbiguous] = useState(false);
   const timer = React.useRef<ReturnType<typeof setTimeout>>();
 
   React.useEffect(() => {
@@ -281,6 +282,21 @@ function Gerador() {
                     },
                   }}
                 />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={avoidAmbiguousChecked}
+                      onChange={() => setAvoidAmbiguous(!avoidAmbiguousChecked)}
+                    />
+                  }
+                  label="Avoid Ambiguous Characters"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontFamily: "Poppins",
+                      fontWeight: "300",
+                    },
+                  }}
+                />
               </FormGroup>
               <Divider
                 variant="middle"
@@ -315,6 +331,7 @@ function Gerador() {
                       uppercaseChecked,
                       numbersChecked,
                       symbolsChecked,
+                      avoidAmbiguousChecked
                     ].every((value) => value === false)
                       ? setOpenErrorSnack(true)
                       : setPassword(
@@ -323,6 +340,7 @@ function Gerador() {
                             uppercaseChecked,
                             numbersChecked,
                             symbolsChecked,
+                            avoidAmbiguousChecked,
                             value
                           )
                         )

@@ -1,6 +1,5 @@
 import { checkPasswordStrength } from "../../utils/strenghtCheck";
 import { Typography } from "@mui/material";
-
 /* The function that changes the time to crack indicator color based in the time to crack the password */
 export function TimeToCrackIndicator(password: string) {
   if (password.length <= 0) {
@@ -48,7 +47,7 @@ export function TimeToCrackIndicator(password: string) {
       color = "#0000ff";
     }
     return (
-      <Typography style={{ fontSize: "17px", fontWeight: "500" }}>
+      <Typography className="text" style={{ fontSize: "17px", fontWeight: "400", fontFamily: "Red Hat Display" }}>
         Time to crack <span style={{ color: color }}>{timeToCrack}</span>
       </Typography>
     );
