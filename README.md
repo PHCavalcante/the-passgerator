@@ -78,7 +78,7 @@ the-passgerator/
 
 # Contributions
 
-Contributions are welcome! Feel free to open issues and pull requests. For more information, see the [contribution guidelines](.github\CONTRIBUTING.md).
+Contributions are welcome! Feel free to open issues and pull requests. For more information, see the [contribution guidelines](.github/CONTRIBUTING.md).
 
 # License
 
