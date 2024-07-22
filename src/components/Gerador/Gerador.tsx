@@ -89,19 +89,7 @@ function Gerador() {
       <CloseIcon fontSize="small"></CloseIcon>
     </IconButton>
   );
-
-  // function passwordAnimation() {
-  //   return (
-  //     <TypeAnimation
-  //     sequence={["Test", "test123"]}
-  //     wrapper="span"
-  //     cursor={false}
-  //     style={{ fontSize: 25, display: "inline-block", color: "#d9e1e8"}}
-  //     speed={{ type: "keyStrokeDelayInMs", value: 70 }}
-  //     />
-  //   );
-  // }
-
+  
   /* calls the algorithm that calls the api, then gives the result based on the api response */
   useEffect(() => {
     const fetch = async () => {
