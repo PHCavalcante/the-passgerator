@@ -1,3 +1,5 @@
+import { ambiguousAlgorithm } from "./ambiguous";
+
 export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, numbersChecked:boolean, symbolsChecked:boolean, ambiguous:boolean, range:number){
     const chars = "abcdefghijklmnopqrstuvwxyz";
     const upper = chars.toUpperCase();
@@ -20,13 +22,6 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
     let password = "";
     let condition = 0;
 
-    function ambiguousAlgorithm(){
-        if((/[O]/.test(password) && /[0]/.test(password)) || ((/[l]/).test(password) && (/[1]/).test(password))){
-            return true;
-        }else{
-            return false;
-        }
-    }
         if (lowercaseChecked && uppercaseChecked && numbersChecked && symbolsChecked){
             while(condition == 0){
                 password = "";
@@ -36,7 +31,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasNumbers() && hasLowercase() && hasUppercase() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -52,7 +47,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasUppercase() && hasNumbers()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -68,7 +63,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasUppercase() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -84,7 +79,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasUppercase()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -100,7 +95,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasNumbers() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -116,7 +111,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasNumbers()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -132,7 +127,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -148,7 +143,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -164,7 +159,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasUppercase() && hasNumbers() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -180,7 +175,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasUppercase() && hasNumbers()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -196,7 +191,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasUppercase() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -212,7 +207,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasUppercase()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -228,7 +223,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasNumbers() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -244,7 +239,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasLowercase() && hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -260,7 +255,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasNumbers()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }
@@ -276,7 +271,7 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
                 if(hasSymbols()){
                     condition = 1;
                     if(ambiguous){
-                        if(ambiguousAlgorithm()){
+                        if(ambiguousAlgorithm(password)){
                             condition = 0;
                         }
                     }

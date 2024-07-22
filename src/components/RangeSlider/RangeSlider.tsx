@@ -4,7 +4,7 @@ import {styled, Slider} from "@mui/material"
 export const RangeSlider = styled(Slider)({
     width: "90%",
     alignSelf: "center",
-    color: "#9baec8",
+    color: "#a1a1a1",
     height: 8,
     "& .MuiSlider-track": {
       border: "none",
@@ -30,7 +30,7 @@ export const RangeSlider = styled(Slider)({
       width: 32,
       height: 32,
       borderRadius: "50% 50% 50% 0",
-      backgroundColor: "#2b90d9",
+      backgroundColor: "#ff5722",
       transformOrigin: "bottom left",
       transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
       "&::before": { display: "none" },

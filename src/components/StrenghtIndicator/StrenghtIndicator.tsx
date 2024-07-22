@@ -7,7 +7,7 @@ export function StrenghtIndicator(password: string) {
   strenght == "Very weak"
     ? "red"
     : strenght == "weak"
-    ? "orange"
+    ? "#FF6F00"
     : strenght == "Average"
     ? "#E18E4A"
     : strenght == "Strong"

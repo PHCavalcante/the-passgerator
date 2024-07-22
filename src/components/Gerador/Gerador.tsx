@@ -27,6 +27,7 @@ import { StrenghtIndicator } from "../StrenghtIndicator/StrenghtIndicator";
 import { GenerateButton } from "../GenerateButton/GenerateButton";
 import { CheckLeakButton } from "../CheckLeakButton/CheckLeakButton";
 import { RangeSlider } from "../RangeSlider/RangeSlider";
+import { orange } from "@mui/material/colors";
 
 function Gerador() {
   const [lowercasesChecked, setLowerChecked] = useState(false);
@@ -63,7 +64,7 @@ function Gerador() {
     }
   };
   /* Handles the slider value */
-  const handleValue = (_event: Event, value:any) => {
+  const handleValue = (_event: Event, value: any) => {
     setValue(value);
   };
   /* Handles the algorithms to close the snackbars */
@@ -88,6 +89,18 @@ function Gerador() {
       <CloseIcon fontSize="small"></CloseIcon>
     </IconButton>
   );
+
+  // function passwordAnimation() {
+  //   return (
+  //     <TypeAnimation
+  //     sequence={["Test", "test123"]}
+  //     wrapper="span"
+  //     cursor={false}
+  //     style={{ fontSize: 25, display: "inline-block", color: "#d9e1e8"}}
+  //     speed={{ type: "keyStrokeDelayInMs", value: 70 }}
+  //     />
+  //   );
+  // }
 
   /* calls the algorithm that calls the api, then gives the result based on the api response */
   useEffect(() => {
@@ -134,6 +147,28 @@ function Gerador() {
               <TextField
                 variant="outlined"
                 className="passcamp"
+                sx={{
+                  "& .MuiInputBase-input": {
+                    fontFamily: "JetBrains Mono",
+                    borderColor: "#ff0000",
+                  },
+                  "& .MuiOutlinedInput-notchedOutline": {
+                  },
+                  "& label.Mui-focused": {
+                    color: "#000",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "#000",
+                    },
+                    "&:hover fieldset": {
+                      borderColor: "#a1a1a1",
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#a1a1a1",
+                    },
+                  },
+                }}
                 label="Your password will appear here"
                 inputProps={{ readOnly: true }}
                 disabled={false}
@@ -186,7 +221,7 @@ function Gerador() {
                     position: "absolute",
                     display: "flex",
                     alignSelf: "center",
-                    backgroundColor: "#fff",
+                    backgroundColor: "#d9e1e8",
                     flexDirection: "column",
                     padding: 3,
                     borderRadius: 5,
@@ -198,6 +233,11 @@ function Gerador() {
                   </Typography>
                   <Button
                     className="modalButton"
+                    sx={{
+                      backgroundColor: "#ff5722",
+                      fontFamily: "JetBrains Mono",
+                      ":hover": { backgroundColor: "#d54111" },
+                    }}
                     variant="contained"
                     onClick={() => setOpenModal(false)}
                   >
@@ -227,6 +267,11 @@ function Gerador() {
                     <Checkbox
                       checked={lowercasesChecked}
                       onChange={() => setLowerChecked(!lowercasesChecked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: orange[900],
+                        },
+                      }}
                     />
                   }
                   label="Include Lowercases"
@@ -242,6 +287,11 @@ function Gerador() {
                     <Checkbox
                       checked={uppercaseChecked}
                       onChange={() => setUpperChecked(!uppercaseChecked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: orange[900],
+                        },
+                      }}
                     />
                   }
                   label="Include Uppercases"
@@ -257,6 +307,11 @@ function Gerador() {
                     <Checkbox
                       checked={numbersChecked}
                       onChange={() => setNumberChecked(!numbersChecked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: orange[900],
+                        },
+                      }}
                     />
                   }
                   label="Include Numbers"
@@ -272,6 +327,11 @@ function Gerador() {
                     <Checkbox
                       checked={symbolsChecked}
                       onChange={() => setSymbolChecked(!symbolsChecked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: orange[900],
+                        },
+                      }}
                     />
                   }
                   label="Include Symbols"
@@ -282,11 +342,20 @@ function Gerador() {
                     },
                   }}
                 />
+                <Divider
+                  variant="middle"
+                  sx={{ color: "#eee", border: "1px solid" }}
+                />
                 <FormControlLabel
                   control={
                     <Checkbox
                       checked={avoidAmbiguousChecked}
                       onChange={() => setAvoidAmbiguous(!avoidAmbiguousChecked)}
+                      sx={{
+                        "&.Mui-checked": {
+                          color: orange[900],
+                        },
+                      }}
                     />
                   }
                   label="Avoid Ambiguous Characters"
@@ -324,6 +393,11 @@ function Gerador() {
               <Tooltip title="Click to generate the password">
                 <GenerateButton
                   variant="contained"
+                  sx={{
+                    ":hover": {
+                      backgroundColor: "#d54111",
+                    },
+                  }}
                   onClick={() =>
                     /* when clicked, checks if at least one checkbox is checked (true). If at least one is checked then it calls the algorithm that generates the password, otherwise it set the error snack to true making him pop up in the screen */
                     [
@@ -331,7 +405,6 @@ function Gerador() {
                       uppercaseChecked,
                       numbersChecked,
                       symbolsChecked,
-                      avoidAmbiguousChecked
                     ].every((value) => value === false)
                       ? setOpenErrorSnack(true)
                       : setPassword(
@@ -351,7 +424,7 @@ function Gerador() {
               </Tooltip>
               <Divider
                 variant="middle"
-                sx={{ color: "#ccc", border: "1px solid" }}
+                sx={{ color: "#eee", border: "1px solid" }}
               />
               <Tooltip
                 title={
@@ -363,6 +436,11 @@ function Gerador() {
                 <Box sx={{ m: 1, position: "relative" }}>
                   <CheckLeakButton
                     variant="contained"
+                    sx={{
+                      ":hover": {
+                        backgroundColor: "#d54111",
+                      },
+                    }}
                     disabled={
                       (password.length <= 0 ? true : false) || !buttonStatus
                     }

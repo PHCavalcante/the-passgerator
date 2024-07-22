@@ -18,7 +18,7 @@ export function TimeToCrackIndicator(password: string) {
       timeToCrack == "Minutes" ||
       timeToCrack == "1 hour"
     ) {
-      color = "#ff7f00";
+      color = "#FF6F00";
     } else if (
       timeToCrack == "Hours" ||
       timeToCrack == "Days" ||
