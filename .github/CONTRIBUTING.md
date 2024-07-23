@@ -17,6 +17,7 @@ Thank you for considering contributing to The Passgerator! This guide will help 
 Fork the repository by clicking the "Fork" button at the right side top of the GitHub page.
 
 2. **Clone the Repository**
+
 Clone the forked repository to your local environment:
 
 ```
