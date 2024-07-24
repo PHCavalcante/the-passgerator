@@ -33,13 +33,13 @@ export function TimeToCrackIndicator(password: string) {
       color = "#8ea604";
     } else if (
       timeToCrack == "Years" ||
-      timeToCrack == "Centures" ||
+      timeToCrack == "Centuries" ||
       timeToCrack == "Millenia"
     ) {
       color = "#005fd1";
     } else if (
-      timeToCrack == "1 milion year" ||
-      timeToCrack == "milions of years" ||
+      timeToCrack == "1 million years" ||
+      timeToCrack == "millions of years" ||
       timeToCrack == "∞"
     ) {
       color = "#0000ff";

@@ -367,7 +367,7 @@ function Gerador() {
                 paddingTop: "10px",
               }}
             >
-              Select the password lenght:
+              Select the password length:
             </Typography>
             <RangeSlider
               valueLabelDisplay="auto"
