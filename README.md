@@ -1,6 +1,6 @@
 # The Passgerator
 
-The passgerator web application developed with React, Typescript and Vite that generates random and secure passwords. The project is configured with with ESLint to maintain quality of code.
+The passgerator is a web application developed with React, Typescript and Vite that generates random and secure passwords.
 
 # Index
 
