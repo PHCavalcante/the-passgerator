@@ -1,3 +1,13 @@
+![NPM Version](https://img.shields.io/npm/v/react?logo=react)
+![GitHub contributors](https://img.shields.io/github/contributors/PHCavalcante/the-passgerator)
+![GitHub forks](https://img.shields.io/github/forks/PHCavalcante/the-passgerator?style=flat)
+![GitHub Repo stars](https://img.shields.io/github/stars/PHCavalcante/the-passgerator?style=flat)
+![GitHub License](https://img.shields.io/github/license/PHCavalcante/the-passgerator)
+![Static Badge](https://img.shields.io/badge/React-%20black?style=static&logo=react&labelColor=black&color=blue)
+![Static Badge](https://img.shields.io/badge/Vite%20-%20black?style=static&logo=vite&labelColor=gray&color=blue)
+![Static Badge](https://img.shields.io/badge/Typescript-%20black?style=static&logo=typescript&labelColor=white&color=blue)
+
+
 # The Passgerator
 
 The passgerator is a web application developed with React, Typescript and Vite that generates random and secure passwords.
@@ -53,6 +63,7 @@ npm run dev
 - `` npm run dev `` Starts the application in development mode.
 - `` npm run lint `` Runs ESLint to check for code issues.
 - `` npm run test `` Runs the test files.
+- `` npm build `` Builds the project for production.
 
 # Project Structure
 ```bash
