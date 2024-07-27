@@ -1,49 +1,21 @@
+/*
+  * Secure Hash Algorithm (SHA1)
+  * CREDITS FOR THE ALGORITHM GOES TO -> http://www.webtoolkit.info/
+  * THANKS FOR THE ALGORITHM BOYS 👍
+*/
 export function stringToHash(password: string) {
-    /**
-  
-  *
-  
-  *  Secure Hash Algorithm (SHA1)
-  
-  * CREDITS FOR THE ALGORIGHM GOES TO -> http://www.webtoolkit.info/
-    THANKS FOR THE ALGORITHM BOYS 👍
-  *
-  
-  **/
-  
-    function rotate_left(n:any, s:any) {
-      var t4 = (n << s) | (n >>> (32 - s));
+    function rotate_left(n:number, s:number) {
+      const t4 = (n << s) | (n >>> (32 - s));
   
       return t4;
     }
   
-    {/*function lsb_hex(val:any) {
-      var str = "";
+    function cvt_hex(val:number) {
+      let str = "";
   
-      var i;
+      let i;
   
-      var vh;
-  
-      var vl;
-  
-      for (i = 0; i <= 6; i += 2) {
-        vh = (val >>> (i * 4 + 4)) & 0x0f;
-  
-        vl = (val >>> (i * 4)) & 0x0f;
-  
-        str += vh.toString(16) + vl.toString(16);
-      }
-  
-      return str;
-    }
-    */}
-  
-    function cvt_hex(val:any) {
-      var str = "";
-  
-      var i;
-  
-      var v;
+      let v;
   
       for (i = 7; i >= 0; i--) {
         v = (val >>> (i * 4)) & 0x0f;
@@ -54,13 +26,13 @@ export function stringToHash(password: string) {
       return str;
     }
   
-    function Utf8Encode(string:any) {
+    function Utf8Encode(string:string) {
       string = string.replace(/\r\n/g, "\n");
   
-      var utftext = "";
+      let utftext = "";
   
-      for (var n = 0; n < string.length; n++) {
-        var c = string.charCodeAt(n);
+      for (let n = 0; n < string.length; n++) {
+        const c = string.charCodeAt(n);
   
         if (c < 128) {
           utftext += String.fromCharCode(c);
@@ -80,31 +52,31 @@ export function stringToHash(password: string) {
       return utftext;
     }
   
-    var blockstart;
+    let blockstart;
   
-    var i, j;
+    let i, j;
   
-    var W = new Array(80);
+    const W = new Array(80);
   
-    var H0 = 0x67452301;
+    let H0 = 0x67452301;
   
-    var H1 = 0xefcdab89;
+    let H1 = 0xefcdab89;
   
-    var H2 = 0x98badcfe;
+    let H2 = 0x98badcfe;
   
-    var H3 = 0x10325476;
+    let H3 = 0x10325476;
   
-    var H4 = 0xc3d2e1f0;
+    let H4 = 0xc3d2e1f0;
   
-    var A, B, C, D, E;
+    let A, B, C, D, E;
   
-    var temp;
+    let temp;
   
     password = Utf8Encode(password);
   
-    var password_len = password.length;
+    const password_len = password.length;
   
-    var word_array = new Array();
+    const word_array = [];
   
     for (i = 0; i < password_len - 3; i += 4) {
       j =
@@ -246,8 +218,7 @@ export function stringToHash(password: string) {
       H4 = (H4 + E) & 0x0ffffffff;
     }
   
-    var temp:any =
-      cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
+    temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
   
     const finalHash = temp.substring(0, 5);
     return finalHash;
