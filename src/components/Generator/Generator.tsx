@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Gerador.css";
+import "./Generator.css";
 import {
   TextField,
   Checkbox,
@@ -23,13 +23,13 @@ import { algorithm } from "../../utils/algorithm";
 import { pwnedCall } from "../../services/pwnedCall";
 import { Writer } from "../Writers/Writer";
 import { TimeToCrackIndicator } from "../TimeToCrackIndicator/TimeToCrackIndicator";
-import { StrenghtIndicator } from "../StrenghtIndicator/StrenghtIndicator";
+import { StrengthIndicator } from "../StrengthIndicator/StrengthIndicator";
 import { GenerateButton } from "../GenerateButton/GenerateButton";
 import { CheckLeakButton } from "../CheckLeakButton/CheckLeakButton";
 import { RangeSlider } from "../RangeSlider/RangeSlider";
 import { orange } from "@mui/material/colors";
 
-function Gerador() {
+function Generator() {
   const [lowercasesChecked, setLowerChecked] = useState(false);
   const [uppercaseChecked, setUpperChecked] = useState(false);
   const [numbersChecked, setNumberChecked] = useState(false);
@@ -51,7 +51,7 @@ function Gerador() {
     };
   }, []);
 
-  /* Handles everything related to the CheckLeakButton, from loading animations to openning the modal */
+  /* Handles everything related to the CheckLeakButton, from loading animations to opening the modal */
   const handleCheckLeakButton = () => {
     if (!loading) {
       setLoading(true);
@@ -63,11 +63,7 @@ function Gerador() {
       }, 2000);
     }
   };
-  /* Handles the slider value */
-  const handleValue = (_event: Event, value: any) => {
-    setValue(value);
-  };
-  /* Handles the algorithms to close the snackbars */
+  /* Handles the algorithms to close the snackbar */
   const handleSnackClose = (
     _event: React.SyntheticEvent | Event,
     reason?: string
@@ -115,13 +111,8 @@ function Gerador() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        style={{
-          marginBottom: 20,
-          fontSize: "2.5rem",
-          textAlign: "center",
-          color: "#333",
-        }}
-      >
+        style={{ marginBottom: 20, fontSize: "2.5rem", textAlign: "center", color: "#333" }}
+        >
         <Writer />
       </motion.h1>
       <motion.div
@@ -129,7 +120,7 @@ function Gerador() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
-        <div className="gerador">
+        <div className="generator">
           <form className="form">
             <div className="passThings">
               <TextField
@@ -163,47 +154,31 @@ function Gerador() {
                 value={password}
               />
               <Tooltip
-                title={
-                  password.length <= 0
-                    ? "Generate the password first"
-                    : "Copy the password to clipboard"
-                }
+                title={password.length <= 0 ? "Generate the password first" : "Copy the password to clipboard"}
                 placement="top"
-              >
+                >
                 <span style={{ alignSelf: "center" }}>
-                  {/* this span is just because MUI dont like tooltips in disabled elements */}
+                  {/* this span is just because MUI don`t like tooltips in disabled elements */}
                   <IconButton
                     disabled={password.length <= 0 ? true : false}
                     className="icon"
                     onClick={copyToClipboard}
                   >
-                    <ContentCopyIcon className="icoon"></ContentCopyIcon>
+                  <ContentCopyIcon/>
                   </IconButton>
                 </span>
               </Tooltip>
-              <Snackbar
-                open={openSnack}
-                autoHideDuration={5000}
-                onClose={handleSnackClose}
-              >
+              <Snackbar open={openSnack} autoHideDuration={5000} onClose={handleSnackClose}>
                 <Alert severity="success" variant="filled" action={action}>
                   Password copied to clipboard!
                 </Alert>
               </Snackbar>
-              <Snackbar
-                open={openErrorSnack}
-                autoHideDuration={5000}
-                onClose={handleSnackClose}
-              >
+              <Snackbar open={openErrorSnack} autoHideDuration={5000} onClose={handleSnackClose}>
                 <Alert severity="error" variant="filled" action={action}>
                   Please select at least one option!
                 </Alert>
               </Snackbar>
-              <Modal
-                open={openModal}
-                className="modal"
-                onClose={() => setOpenModal(false)}
-              >
+              <Modal open={openModal} className="modal" onClose={() => setOpenModal(false)}>
                 <Box
                   sx={{
                     position: "absolute",
@@ -217,7 +192,7 @@ function Gerador() {
                   }}
                 >
                   <Typography className="modalText">
-                    <>{result}</>
+                    {result}
                   </Typography>
                   <Button
                     className="modalButton"
@@ -240,7 +215,7 @@ function Gerador() {
               transition={{ duration: 0.5, ease: "easeIn" }}
               className="passwordData"
             >
-              {StrenghtIndicator(password)}
+              {StrengthIndicator(password)}
               {TimeToCrackIndicator(password)}
             </motion.div>
             <Divider
@@ -253,6 +228,7 @@ function Gerador() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      name="lowerCase"
                       checked={lowercasesChecked}
                       onChange={() => setLowerChecked(!lowercasesChecked)}
                       sx={{
@@ -273,6 +249,7 @@ function Gerador() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      name="upperCase"
                       checked={uppercaseChecked}
                       onChange={() => setUpperChecked(!uppercaseChecked)}
                       sx={{
@@ -282,7 +259,7 @@ function Gerador() {
                       }}
                     />
                   }
-                  label="Include Uppercases"
+                  label="Include Uppercase"
                   sx={{
                     "& .MuiTypography-root": {
                       fontFamily: "Poppins",
@@ -293,6 +270,7 @@ function Gerador() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      name="numbers"
                       checked={numbersChecked}
                       onChange={() => setNumberChecked(!numbersChecked)}
                       sx={{
@@ -313,6 +291,7 @@ function Gerador() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      name="symbols"
                       checked={symbolsChecked}
                       onChange={() => setSymbolChecked(!symbolsChecked)}
                       sx={{
@@ -337,6 +316,7 @@ function Gerador() {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      name="avoidAmbiguous"
                       checked={avoidAmbiguousChecked}
                       onChange={() => setAvoidAmbiguous(!avoidAmbiguousChecked)}
                       sx={{
@@ -355,18 +335,9 @@ function Gerador() {
                   }}
                 />
               </FormGroup>
-              <Divider
-                variant="middle"
-                sx={{ color: "#eee", border: "1px solid" }}
-              />
+              <Divider variant="middle" sx={{ color: "#eee", border: "1px solid" }}/>
             </div>
-            <Typography
-              sx={{
-                fontFamily: "Poppins",
-                fontWeight: "300",
-                paddingTop: "10px",
-              }}
-            >
+            <Typography sx={{ fontFamily: "Poppins", fontWeight: "300", paddingTop: "10px"}}>
               Select the password length:
             </Typography>
             <RangeSlider
@@ -375,7 +346,7 @@ function Gerador() {
               min={4}
               max={140}
               value={value}
-              onChange={(_event, value) => handleValue(_event, value)}
+              onChange={(_event:Event, value:number|number[]) => setValue(value as number)}
             ></RangeSlider>
             <div className="buttons">
               <Tooltip title="Click to generate the password">
@@ -458,4 +429,4 @@ function Gerador() {
     </>
   );
 }
-export default Gerador;
+export default Generator;

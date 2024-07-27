@@ -19,10 +19,10 @@ type TimeToCrack =
   | "Months"
   | "1 year"
   | "Years"
-  | "Centures"
-  | "Millenia"
-  | "1 milion years"
-  | "Milions of Years"
+  | "Centuries"
+  | "Millennia"
+  | "million"
+  | "Millions"
   | "∞";
 export function checkPasswordStrength(
   password: string
@@ -111,9 +111,9 @@ export function checkPasswordStrength(
     "13-Lowercase Letters": ["weak", "Weeks"],
     "14-Lowercase Letters": ["weak", "1 year"],
     "15-Lowercase Letters": ["Average", "Years"],
-    "16-Lowercase Letters": ["Average", "Centures"],
-    "17-Lowercase Letters": ["Average", "Millenia"],
-    "18-Lowercase Letters": ["Average", "Millenia"],
+    "16-Lowercase Letters": ["Average", "Centuries"],
+    "17-Lowercase Letters": ["Average", "Millennia"],
+    "18-Lowercase Letters": ["Average", "Millennia"],
 
     "4-Upper and Lowercase Letters": ["Very weak", "Instantly"],
     "5-Upper and Lowercase Letters": ["Very weak", "Instantly"],
@@ -124,10 +124,10 @@ export function checkPasswordStrength(
     "10-Upper and Lowercase Letters": ["Average", "Hours"],
     "11-Upper and Lowercase Letters": ["Average", "1 month"],
     "12-Upper and Lowercase Letters": ["Average", "Years"],
-    "13-Upper and Lowercase Letters": ["Strong", "Centures"],
-    "14-Upper and Lowercase Letters": ["Strong", "Millenia"],
-    "15-Upper and Lowercase Letters": ["Strong", "Millenia"],
-    "16-Upper and Lowercase Letters": ["Very strong", "Milions of Years"],
+    "13-Upper and Lowercase Letters": ["Strong", "Centuries"],
+    "14-Upper and Lowercase Letters": ["Strong", "Millennia"],
+    "15-Upper and Lowercase Letters": ["Strong", "Millennia"],
+    "16-Upper and Lowercase Letters": ["Very strong", "Millions"],
     "17-Upper and Lowercase Letters": ["Very strong", "∞"],
     "18-Upper and Lowercase Letters": ["Very strong", "∞"],
 
@@ -140,10 +140,10 @@ export function checkPasswordStrength(
     "10-Numbers, Upper and Lowercase Letters": ["Average", "Days"],
     "11-Numbers, Upper and Lowercase Letters": ["Strong", "Months"],
     "12-Numbers, Upper and Lowercase Letters": ["Strong", "Years"],
-    "13-Numbers, Upper and Lowercase Letters": ["Strong", "Millenia"],
-    "14-Numbers, Upper and Lowercase Letters": ["Very strong", "Millenia"],
-    "15-Numbers, Upper and Lowercase Letters": ["Very strong", "Milions of Years"],
-    "16-Numbers, Upper and Lowercase Letters": ["Very strong", "Milions of Years"],
+    "13-Numbers, Upper and Lowercase Letters": ["Strong", "Millennia"],
+    "14-Numbers, Upper and Lowercase Letters": ["Very strong", "Millennia"],
+    "15-Numbers, Upper and Lowercase Letters": ["Very strong", "Millions"],
+    "16-Numbers, Upper and Lowercase Letters": ["Very strong", "Millions"],
     "17-Numbers, Upper and Lowercase Letters": ["Very strong", "∞"],
     "18-Numbers, Upper and Lowercase Letters": ["Very strong", "∞"],
 
@@ -156,9 +156,9 @@ export function checkPasswordStrength(
     "10-Numbers, Upper and Lowercase Letters, Symbols": ["Strong", "Weeks"],
     "11-Numbers, Upper and Lowercase Letters, Symbols": ["Strong", "Years"],
     "12-Numbers, Upper and Lowercase Letters, Symbols": ["Strong", "Years"],
-    "13-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","Millenia"],
-    "14-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","1 milion years"],
-    "15-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","Milions of Years"],
+    "13-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","Millennia"],
+    "14-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","million"],
+    "15-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong","Millions"],
     "16-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong", "∞"],
     "17-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong", "∞"],
     "18-Numbers, Upper and Lowercase Letters, Symbols": ["Very strong", "∞"],

@@ -1,4 +1,4 @@
-import { checkPasswordStrength } from "../../utils/strenghtCheck";
+import { checkPasswordStrength } from "../../utils/strengthCheck";
 import { Typography } from "@mui/material";
 /* The function that changes the time to crack indicator color based in the time to crack the password */
 export function TimeToCrackIndicator(password: string) {
@@ -34,7 +34,7 @@ export function TimeToCrackIndicator(password: string) {
     } else if (
       timeToCrack == "Years" ||
       timeToCrack == "Centuries" ||
-      timeToCrack == "Millenia"
+      timeToCrack == "Millennia"
     ) {
       color = "#005fd1";
     } else if (

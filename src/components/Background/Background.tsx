@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { Container, ISourceOptions } from "@tsparticles/engine";
+import { ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 export const Background = () => {
@@ -13,10 +13,6 @@ export const Background = () => {
       setInit(true);
     });
   }, []);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
 
   const options: ISourceOptions = useMemo(
     () => ({
@@ -32,8 +28,8 @@ export const Background = () => {
       fpsLimit: 120,
       interactivity: {
         events: {
-          onClick: { enable: true, mode: "push" },
-          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: false, mode: "push" },
+          onHover: { enable: false, mode: "repulse" },
         },
         modes: {
           push: { quantity: 4 },
@@ -79,7 +75,6 @@ export const Background = () => {
     return (
       <Particles
         id="tsparticles"
-        particlesLoaded={particlesLoaded}
         options={options}
       />
     );
