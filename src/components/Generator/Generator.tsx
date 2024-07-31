@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Generator.css";
 import {
   TextField,
@@ -30,22 +30,24 @@ import { RangeSlider } from "../RangeSlider/RangeSlider";
 import { orange } from "@mui/material/colors";
 
 function Generator() {
-  const [lowercasesChecked, setLowerChecked] = useState(false);
-  const [uppercaseChecked, setUpperChecked] = useState(false);
-  const [numbersChecked, setNumberChecked] = useState(false);
-  const [symbolsChecked, setSymbolChecked] = useState(false);
   const [value, setValue] = useState(8);
   const [password, setPassword] = useState("");
   const [openSnack, setOpenSnack] = useState(false);
   const [openErrorSnack, setOpenErrorSnack] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [result, setResult] = useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   const [buttonStatus, SetButtonStatus] = useState(true);
-  const [avoidAmbiguousChecked, setAvoidAmbiguous] = useState(false);
-  const timer = React.useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const [checkboxStates, setCheckboxStates] = useState({
+    lower: false,
+    upper: false,
+    numbers: false,
+    symbols: false,
+    ambiguous: false,
+  });
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       clearTimeout(timer.current);
     };
@@ -53,14 +55,15 @@ function Generator() {
 
   /* Handles everything related to the CheckLeakButton, from loading animations to opening the modal */
   const handleCheckLeakButton = () => {
+    const time = Math.floor(Math.random() * 5) + "000";
     if (!loading) {
       setLoading(true);
       SetButtonStatus(false);
       timer.current = setTimeout(() => {
         setLoading(false);
         setOpenModal(true);
-        SetButtonStatus(true);
-      }, 2000);
+        // SetButtonStatus(true);
+      }, parseInt(time, 10));
     }
   };
   /* Handles the algorithms to close the snackbar */
@@ -229,8 +232,8 @@ function Generator() {
                   control={
                     <Checkbox
                       name="lowerCase"
-                      checked={lowercasesChecked}
-                      onChange={() => setLowerChecked(!lowercasesChecked)}
+                      checked={checkboxStates.lower}
+                      onChange={() => setCheckboxStates({...checkboxStates, lower:true})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -250,8 +253,8 @@ function Generator() {
                   control={
                     <Checkbox
                       name="upperCase"
-                      checked={uppercaseChecked}
-                      onChange={() => setUpperChecked(!uppercaseChecked)}
+                      checked={checkboxStates.upper}
+                      onChange={() => setCheckboxStates({...checkboxStates, upper: true})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -271,8 +274,8 @@ function Generator() {
                   control={
                     <Checkbox
                       name="numbers"
-                      checked={numbersChecked}
-                      onChange={() => setNumberChecked(!numbersChecked)}
+                      checked={checkboxStates.numbers}
+                      onChange={() => setCheckboxStates({...checkboxStates, numbers:true})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -292,8 +295,8 @@ function Generator() {
                   control={
                     <Checkbox
                       name="symbols"
-                      checked={symbolsChecked}
-                      onChange={() => setSymbolChecked(!symbolsChecked)}
+                      checked={checkboxStates.symbols}
+                      onChange={() => setCheckboxStates({...checkboxStates, symbols:true})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -317,8 +320,8 @@ function Generator() {
                   control={
                     <Checkbox
                       name="avoidAmbiguous"
-                      checked={avoidAmbiguousChecked}
-                      onChange={() => setAvoidAmbiguous(!avoidAmbiguousChecked)}
+                      checked={checkboxStates.ambiguous}
+                      onChange={() => setCheckboxStates({...checkboxStates, ambiguous:true})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -360,22 +363,22 @@ function Generator() {
                   onClick={() =>
                     /* when clicked, checks if at least one checkbox is checked (true). If at least one is checked then it calls the algorithm that generates the password, otherwise it set the error snack to true making him pop up in the screen */
                     [
-                      lowercasesChecked,
-                      uppercaseChecked,
-                      numbersChecked,
-                      symbolsChecked,
+                      checkboxStates.lower,
+                      checkboxStates.upper,
+                      checkboxStates.numbers,
+                      checkboxStates.symbols,
                     ].every((value) => value === false)
                       ? setOpenErrorSnack(true)
-                      : setPassword(
+                      : [setPassword(
                           algorithm(
-                            lowercasesChecked,
-                            uppercaseChecked,
-                            numbersChecked,
-                            symbolsChecked,
-                            avoidAmbiguousChecked,
+                            checkboxStates.lower,
+                            checkboxStates.upper,
+                            checkboxStates.numbers,
+                            checkboxStates.symbols,
+                            checkboxStates.ambiguous,
                             value
                           )
-                        )
+                        ),SetButtonStatus(true)]
                   }
                 >
                   Generate
@@ -389,7 +392,9 @@ function Generator() {
                 title={
                   password.length <= 0
                     ? "Generate the password first"
-                    : "Check for leaks in the database"
+                    :  buttonStatus == true
+                    ? "Check for leaks in the database"
+                    : "Leak Already Checked"
                 }
               >
                 <Box sx={{ m: 1, position: "relative" }}>
