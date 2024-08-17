@@ -47,12 +47,6 @@ function Generator() {
     ambiguous: false,
   });
 
-  useEffect(() => {
-    return () => {
-      clearTimeout(timer.current);
-    };
-  }, []);
-
   /* Handles everything related to the CheckLeakButton, from loading animations to opening the modal */
   const handleCheckLeakButton = () => {
     const time = Math.floor(Math.random() * 5) + "000";
@@ -218,8 +212,8 @@ function Generator() {
               transition={{ duration: 0.5, ease: "easeIn" }}
               className="passwordData"
             >
-              {StrengthIndicator(password)}
-              {TimeToCrackIndicator(password)}
+              {password ? StrengthIndicator(password) : null}
+              {password ? TimeToCrackIndicator(password) : null}
             </motion.div>
             <Divider
               variant="middle"
@@ -233,7 +227,7 @@ function Generator() {
                     <Checkbox
                       name="lowerCase"
                       checked={checkboxStates.lower}
-                      onChange={() => setCheckboxStates({...checkboxStates, lower:true})}
+                      onChange={() => setCheckboxStates({...checkboxStates, lower:!checkboxStates.lower})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -254,7 +248,7 @@ function Generator() {
                     <Checkbox
                       name="upperCase"
                       checked={checkboxStates.upper}
-                      onChange={() => setCheckboxStates({...checkboxStates, upper: true})}
+                      onChange={() => setCheckboxStates({...checkboxStates, upper: !checkboxStates.upper})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -275,7 +269,7 @@ function Generator() {
                     <Checkbox
                       name="numbers"
                       checked={checkboxStates.numbers}
-                      onChange={() => setCheckboxStates({...checkboxStates, numbers:true})}
+                      onChange={() => setCheckboxStates({...checkboxStates, numbers:!checkboxStates.numbers})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -296,7 +290,7 @@ function Generator() {
                     <Checkbox
                       name="symbols"
                       checked={checkboxStates.symbols}
-                      onChange={() => setCheckboxStates({...checkboxStates, symbols:true})}
+                      onChange={() => setCheckboxStates({...checkboxStates, symbols:!checkboxStates.symbols})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
@@ -321,7 +315,7 @@ function Generator() {
                     <Checkbox
                       name="avoidAmbiguous"
                       checked={checkboxStates.ambiguous}
-                      onChange={() => setCheckboxStates({...checkboxStates, ambiguous:true})}
+                      onChange={() => setCheckboxStates({...checkboxStates, ambiguous:!checkboxStates.ambiguous})}
                       sx={{
                         "&.Mui-checked": {
                           color: orange[900],
