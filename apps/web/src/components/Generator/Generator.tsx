@@ -118,7 +118,7 @@ function Generator() {
         transition={{ duration: 0.8, ease: "easeInOut" }}
       >
         <div className="generator">
-          <form className="form">
+          <Box className="form">
             <div className="passThings">
               <TextField
                 variant="outlined"
@@ -154,12 +154,14 @@ function Generator() {
                 title={password.length <= 0 ? "Generate the password first" : "Copy the password to clipboard"}
                 placement="top"
                 >
-                <span style={{ alignSelf: "center" }}>
+                <span role="none" style={{ alignSelf: "center" }}>
                   {/* this span is just because MUI don`t like tooltips in disabled elements */}
                   <IconButton
                     disabled={password.length <= 0 ? true : false}
                     className="icon"
                     onClick={copyToClipboard}
+                    aria-label={!password ? "No password to copy" : "Copy to clipboard"}
+                    aria-disabled={!password}
                   >
                   <ContentCopyIcon/>
                   </IconButton>
@@ -422,7 +424,7 @@ function Generator() {
                 </Box>
               </Tooltip>
             </div>
-          </form>
+          </Box>
         </div>
       </motion.div>
     </>
