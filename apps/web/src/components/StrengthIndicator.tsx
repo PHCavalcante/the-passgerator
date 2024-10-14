@@ -1,7 +1,12 @@
 import { Typography } from "@mui/material";
-import { checkPasswordStrength } from "../../utils/strengthCheck";
+import { checkPasswordStrength } from "../utils/strengthCheck";
+
+type StrengthIndicatorType = {
+  password: string
+};
+
 /* The function that changes the strength color in the strength indicator based in the password strength */
-export function StrengthIndicator(password: string) {
+export default function StrengthIndicator({password}: StrengthIndicatorType) {
   const strength:string|undefined = checkPasswordStrength(password).at(0);
   const color =
   strength == "Very weak"
@@ -16,9 +21,9 @@ export function StrengthIndicator(password: string) {
     ? "blue"
     : "blue";
 
-  return password.length > 0 ? (
+  return password && (
     <Typography style={{ fontSize: "17px", fontWeight: "400", fontFamily: "Red Hat Display"}}>
       The password is <span style={{ color: color }}>{strength}</span>
     </Typography>
-  ) : null;
+  );
 }
