@@ -19,7 +19,7 @@ import Close from "../assets/close.svg";
 import Modal from "@mui/material/Modal";
 import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from "framer-motion";
-import { algorithm } from "../utils/algorithm";
+import { algorithm } from "@repo/shared-utils"
 import Writer from "./Writer";
 import { GenerateButton } from "./GenerateButton";
 import { CheckLeakButton } from "./CheckLeakButton";

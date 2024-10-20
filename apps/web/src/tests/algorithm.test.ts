@@ -1,4 +1,4 @@
-import { algorithm } from "../utils/algorithm";
+import { algorithm } from "@repo/shared-utils";
 
 describe("algorithm", () => {
     it("the password returned length should be the same as specified in parameter", () => {

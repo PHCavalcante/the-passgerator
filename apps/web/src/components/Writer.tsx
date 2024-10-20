@@ -9,7 +9,7 @@ function Writer(){
         wrapper="h1"
         cursor={false}
         repeat={0}
-        style={{...typeAnimationStyled, fontSize: 25}} // adicionar fontSize: 25
+        style={{...typeAnimationStyled, fontSize: 25}}
         speed={{ type: "keyStrokeDelayInMs", value: 70 }}
         className="writer"
       />

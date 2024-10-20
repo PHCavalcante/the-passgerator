@@ -1,6 +1,10 @@
-import { ambiguousAlgorithm } from "./ambiguous";
-
-export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, numbersChecked:boolean, symbolsChecked:boolean, ambiguous:boolean, range:number){
+function ambiguousAlgorithm(password:string){
+    if((/[O]/.test(password) && /[0]/.test(password)) || ((/[l]/).test(password) && (/[1]/).test(password))){
+        return true;
+    }
+    return false;
+}
+function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, numbersChecked:boolean, symbolsChecked:boolean, ambiguous:boolean, range:number){
     const chars = "abcdefghijklmnopqrstuvwxyz";
     const upper = chars.toUpperCase();
     const numbers = "0123456789";
@@ -265,3 +269,5 @@ export function algorithm(lowercaseChecked:boolean, uppercaseChecked:boolean, nu
         }
     return password;
 }
+
+export { ambiguousAlgorithm, algorithm}

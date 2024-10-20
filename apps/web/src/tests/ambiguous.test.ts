@@ -1,4 +1,4 @@
-import { ambiguousAlgorithm } from "../utils/ambiguous";
+import { ambiguousAlgorithm } from "@repo/shared-utils";
 
 describe("ambiguous", () => {
     it("should return true for 'O0nb123'", () => {
