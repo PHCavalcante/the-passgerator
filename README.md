@@ -1,81 +1,109 @@
-# Turborepo starter
+![NPM Version](https://img.shields.io/npm/v/react?logo=react)
+![GitHub contributors](https://img.shields.io/github/contributors/PHCavalcante/the-passgerator)
+![GitHub forks](https://img.shields.io/github/forks/PHCavalcante/the-passgerator?style=flat)
+![GitHub Repo stars](https://img.shields.io/github/stars/PHCavalcante/the-passgerator?style=flat)
+![GitHub License](https://img.shields.io/github/license/PHCavalcante/the-passgerator)
+![Static Badge](https://img.shields.io/badge/React-%20black?style=static&logo=react&labelColor=black&color=blue)
+![Static Badge](https://img.shields.io/badge/Vite%20-%20black?style=static&logo=vite&labelColor=gray&color=blue)
+![Static Badge](https://img.shields.io/badge/Typescript-%20black?style=static&logo=typescript&labelColor=white&color=blue)
 
-This is an official starter Turborepo.
 
-## Using this example
+# The Passgerator
 
-Run the following command:
+What is The Passgerator?
 
-```sh
-npx create-turbo@latest
-```
+The Passgerator is your tool for generating random, complex and secure passwords for all your online accounts. With it, you can say goodbye to easy-to-guess passwords and significantly increase the security of your information.
 
-## What's inside?
+## Why use The Passgerator?
 
-This Turborepo includes the following packages/apps:
+- Simple: Intuitive and easy-to-use interface.
+- Secure: Generates random and complex passwords, following best - security practices.
+- Robust: Reliable and well-tested code.
+- Customizable: Configure password length and allowed characters.
+- Open-source: Contribute to the project and help make it even better!
 
-### Apps and Packages
+# Index
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- [Overview](#Overview)
+- [Features](#Features)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Avaliable Scripts](#Avaliable%20Scripts)
+- [Project Structure](#Project%20Structure)
+- [Contributions](#Contributions)
+- [License](#LICENSE)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+# Overview
 
-### Utilities
+The goal of The Passgerator is to provide a simple interface for generating secure passwords. The application allows users to configure the criteria for the generated passwords, such as length and inclusion of special characters.
 
-This Turborepo has some additional tools already setup for you:
+# Features
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- Generation of secure and random passwords.
+- Option to set password length.
+- Inclusion of special characters, numbers, upper and lower case letters.
+- Option to check whether the generated password has already been exposed in data breaches.
+- Clean, friendly and easy to use interface.
 
-### Build
+# Installation
 
-To build all apps and packages, run the following command:
+To install and run the project locally, follow the steps below:
 
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+1. Clone the repository: 
 
 ```
-cd my-turborepo
-npx turbo login
+git clone https://github.com/PHCavalcante/the-passgerator.git
+cd the-passgerator
+```
+2. Install the dependencies:
+```
+npm install
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+# Usage
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+To start the application in development mode, use the command:
 
 ```
-npx turbo link
+npm run dev
 ```
 
-## Useful Links
+# Avaliable Scripts
 
-Learn more about the power of Turborepo:
+- `` npm run dev `` Starts the application in development mode.
+- `` npm run lint `` Runs ESLint to check for code issues.
+- `` npm run test `` Runs the test files.
+- `` npm build `` Builds the project for production.
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+# Project Structure
+```bash
+the-passgerator/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── services/
+│   ├── tests/
+│   ├── utils/
+│   ├── index.css
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+├── .eslintrc.js
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── viteconfig.json
+├── vite.config.ts
+```
+
+# Contributions
+
+Contributions are welcome! Feel free to open issues and pull requests. For more information, see the [contribution guidelines](.github/CONTRIBUTING.md).
+
+# License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
