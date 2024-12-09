@@ -5,7 +5,6 @@ type StrengthIndicatorType = {
   password: string
 };
 
-/* The function that changes the strength color in the strength indicator based in the password strength */
 export default function StrengthIndicator({password}: StrengthIndicatorType) {
   const strength:string|undefined = checkPasswordStrength(password).at(0);
   const color =

@@ -5,7 +5,6 @@ type TimeToCrackIndicatorType = {
   password: string
 };
 
-/* The function that changes the time to crack indicator color based in the time to crack the password */
 export default function TimeToCrackIndicator({password}: TimeToCrackIndicatorType) {
   if (password.length <= 0) {
     return null;

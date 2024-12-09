@@ -55,13 +55,11 @@ function Generator() {
         () => {
           setLoading(false);
           setOpenModal(true);
-          // SetButtonStatus(true);
         },
         parseInt(time, 10)
       );
     }
   };
-  /* Handles the algorithms to close the snackbar */
   const handleSnackClose = (
     _event: React.SyntheticEvent | Event,
     reason?: string
@@ -72,23 +70,20 @@ function Generator() {
     setOpenSnack(false);
     setOpenErrorSnack(false);
   };
-  /* The algorithm that copy the generated password to the clipboard */
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
     setOpenSnack(true);
   };
-  /* The X icon on the alerts */
   const action = (
     <IconButton size="small" color="inherit" onClick={handleSnackClose}>
       <img src={Close} />
     </IconButton>
   );
 
-  /* calls the algorithm that calls the api, then gives the result based on the api response */
   useEffect(() => {
     const fetch = async () => {
       if (!password) {
-        setResult("password no generated yet");
+        setResult("password not generated yet");
       } else {
         const { pwnedCall } = await import("../services/pwnedCall");
         const hasRecords = await pwnedCall(password);

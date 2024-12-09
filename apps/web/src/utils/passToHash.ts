@@ -1,7 +1,6 @@
 /*
   * Secure Hash Algorithm (SHA1)
   * CREDITS FOR THE ALGORITHM GOES TO -> http://www.webtoolkit.info/
-  * THANKS FOR THE ALGORITHM BOYS 👍
 */
 export function stringToHash(password: string) {
     function rotate_left(n:number, s:number) {
