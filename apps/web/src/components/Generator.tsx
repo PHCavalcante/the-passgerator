@@ -23,7 +23,7 @@ import { algorithm } from "@repo/shared-utils"
 import Writer from "./Writer";
 import { GenerateButton } from "./GenerateButton";
 import { CheckLeakButton } from "./CheckLeakButton";
-import { RangeSlider } from "./RangeSlider";
+import RangeSlider from "./RangeSlider";
 const TimeToCrackIndicator = lazy(() => import("./TimeToCrackIndicator"));
 const StrengthIndicator = lazy(() => import("./StrengthIndicator"));
 
@@ -103,7 +103,6 @@ function Generator() {
     };
     fetch();
   }, [password]);
-
   return (
     <>
       <Writer />
@@ -283,16 +282,7 @@ function Generator() {
             >
               Select the password length:
             </Typography>
-            <RangeSlider
-              valueLabelDisplay="auto"
-              defaultValue={8}
-              min={4}
-              max={140}
-              value={value}
-              onChange={(_event: Event, value: number | number[]) =>
-                setValue(value as number)
-              }
-            ></RangeSlider>
+            <RangeSlider setValue={setValue} />
             <Box sx={ styles.buttonsStyled }>
               <Tooltip title="Click to generate the password">
                 <GenerateButton
