@@ -1,6 +1,6 @@
 import {styled, Button, ButtonProps} from "@mui/material";
 
-export const GenerateButton = styled(Button)<ButtonProps>(({ theme }) => ({
+export const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText("#ff9800"), 
     fontFamily: "JetBrains Mono",
     backgroundColor: "#ff5722",

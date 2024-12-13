@@ -21,8 +21,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from "framer-motion";
 import { algorithm } from "@repo/shared-utils"
 import Writer from "./Writer";
-import { GenerateButton } from "./GenerateButton";
-import { CheckLeakButton } from "./CheckLeakButton";
+import { StyledButton } from "./StyledButton";
 import RangeSlider from "./RangeSlider";
 const TimeToCrackIndicator = lazy(() => import("./TimeToCrackIndicator"));
 const StrengthIndicator = lazy(() => import("./StrengthIndicator"));
@@ -44,8 +43,6 @@ function Generator() {
     symbols: false,
     ambiguous: false,
   });
-
-  /* Handles everything related to the CheckLeakButton, from loading animations to opening the modal */
   const handleCheckLeakButton = () => {
     const time = Math.floor(Math.random() * 5) + "000";
     if (!loading) {
@@ -280,7 +277,7 @@ function Generator() {
             <RangeSlider setValue={setValue} />
             <Box sx={ styles.buttonsStyled }>
               <Tooltip title="Click to generate the password">
-                <GenerateButton
+                <StyledButton
                   variant="contained"
                   sx={ styles.buttonStyled }
                   onClick={() =>
@@ -308,7 +305,7 @@ function Generator() {
                   }
                 >
                   Generate
-                </GenerateButton>
+                </StyledButton>
               </Tooltip>
               <Divider variant="middle" sx={ styles.dividerStyle } />
               <Tooltip
@@ -321,14 +318,14 @@ function Generator() {
                 }
               >
                 <Box sx={{ m: 1, position: "relative" }}>
-                  <CheckLeakButton
+                  <StyledButton
                     variant="contained"
                     sx={ styles.buttonStyled}
                     disabled={(!password ? true : false) || !buttonStatus}
                     onClick={() => handleCheckLeakButton()}
                   >
                     Check Leak
-                  </CheckLeakButton>
+                  </StyledButton>
                   {loading && (
                     <CircularProgress
                       size={25}
