@@ -64,6 +64,7 @@ const RangeSlider = ({setValue} : SliderProps) => {
       value={actualValue}
       onChange={handleChange}
       onChangeCommitted={handleChangeCommitted}
+      aria-label="Range Slider"
     />
   );
 };

@@ -15,7 +15,7 @@ export default function Header() {
       <Link target="_blank" href="https://github.com/PHCavalcante/the-passgerator">
         <Button>
           {" "}
-          <img src={githubLogo} alt="github logo"  style={{ width: "25px", height: "auto" }} />
+          <img src={githubLogo} alt="github logo"  style={{ width: "25px", height: "25px" }} />
         </Button>
       </Link>
       </Tooltip>
