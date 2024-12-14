@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import {
   TextField,
-  Checkbox,
   Button,
-  FormGroup,
-  FormControlLabel,
   Typography,
   IconButton,
   Tooltip,
   Snackbar,
-  Divider,
   Box,
   Stack
 } from "@mui/material";
@@ -23,14 +19,14 @@ import { algorithm } from "@repo/shared-utils"
 import Writer from "./Writer";
 import { StyledButton } from "./StyledButton";
 import RangeSlider from "./RangeSlider";
+import Checkboxes from "./Checkboxes";
+import CustomDivider from "./CustomDivider";
 const TimeToCrackIndicator = lazy(() => import("./TimeToCrackIndicator"));
 const StrengthIndicator = lazy(() => import("./StrengthIndicator"));
 
 function Generator() {
   const [value, setValue] = useState(8);
   const [password, setPassword] = useState("");
-  const [openSnack, setOpenSnack] = useState(false);
-  const [openErrorSnack, setOpenErrorSnack] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,6 +38,10 @@ function Generator() {
     numbers: false,
     symbols: false,
     ambiguous: false,
+  });
+  const [openSnacks, setOpenSnacks] = useState({
+    open: false,
+    error: false
   });
   const handleCheckLeakButton = () => {
     const time = Math.floor(Math.random() * 5) + "000";
@@ -64,12 +64,12 @@ function Generator() {
     if (reason == "clickaway") {
       return;
     }
-    setOpenSnack(false);
-    setOpenErrorSnack(false);
+    setOpenSnacks({...openSnacks, open: false});
+    setOpenSnacks({...openSnacks, error: false});
   };
   const copyToClipboard = () => {
     navigator.clipboard.writeText(password);
-    setOpenSnack(true);
+    setOpenSnacks({...openSnacks, open: true});
   };
   const action = (
     <IconButton size="small" color="inherit" onClick={handleSnackClose}>
@@ -127,7 +127,7 @@ function Generator() {
                     aria-disabled={!password}
                   >
                     <img
-                      style={{ width: 28, opacity: !password ? "20%" : "100%" }}
+                      style={{ width: 28, height: 28, opacity: !password ? "20%" : "100%" }}
                       src={Copy}
                       alt="Copy to clipboard icon"
                     />
@@ -135,7 +135,7 @@ function Generator() {
                 </span>
               </Tooltip>
               <Snackbar
-                open={openSnack}
+                open={openSnacks.open}
                 autoHideDuration={5000}
                 onClose={handleSnackClose}
               >
@@ -144,7 +144,7 @@ function Generator() {
                 </Alert>
               </Snackbar>
               <Snackbar
-                open={openErrorSnack}
+                open={openSnacks.error}
                 autoHideDuration={5000}
                 onClose={handleSnackClose}
               >
@@ -170,7 +170,7 @@ function Generator() {
               </Modal>
             </Stack>
             {password && (
-              <Suspense fallback="Calculating Strenght...">
+              <Suspense fallback="Calculating Strength...">
                 <StrengthIndicator password={password} />
               </Suspense>
             )}
@@ -179,96 +179,9 @@ function Generator() {
                 <TimeToCrackIndicator password={password} />
               </Suspense>
             )}
-            <Divider variant="middle" sx={ styles.dividerStyle } />
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="lowerCase"
-                      checked={checkboxStates.lower}
-                      onChange={() =>
-                        setCheckboxStates({
-                          ...checkboxStates,
-                          lower: !checkboxStates.lower,
-                        })
-                      }
-                      sx={ styles.checkboxStyled }
-                    />
-                  }
-                  label="Include Lowercases"
-                  sx={ styles.formControlLabelStyled }
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="upperCase"
-                      checked={checkboxStates.upper}
-                      onChange={() =>
-                        setCheckboxStates({
-                          ...checkboxStates,
-                          upper: !checkboxStates.upper,
-                        })
-                      }
-                      sx={ styles.checkboxStyled }
-                    />
-                  }
-                  label="Include Uppercase"
-                  sx={ styles.formControlLabelStyled }
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="numbers"
-                      checked={checkboxStates.numbers}
-                      onChange={() =>
-                        setCheckboxStates({
-                          ...checkboxStates,
-                          numbers: !checkboxStates.numbers,
-                        })
-                      }
-                      sx={ styles.checkboxStyled }
-                    />
-                  }
-                  label="Include Numbers"
-                  sx={ styles.formControlLabelStyled }
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="symbols"
-                      checked={checkboxStates.symbols}
-                      onChange={() =>
-                        setCheckboxStates({
-                          ...checkboxStates,
-                          symbols: !checkboxStates.symbols,
-                        })
-                      }
-                      sx={ styles.checkboxStyled }
-                    />
-                  }
-                  label="Include Symbols"
-                  sx={ styles.formControlLabelStyled }
-                />
-                <Divider variant="middle" sx={ styles.dividerStyle } />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      name="avoidAmbiguous"
-                      checked={checkboxStates.ambiguous}
-                      onChange={() =>
-                        setCheckboxStates({
-                          ...checkboxStates,
-                          ambiguous: !checkboxStates.ambiguous,
-                        })
-                      }
-                      sx={ styles.checkboxStyled }
-                    />
-                  }
-                  label="Avoid Ambiguous Characters"
-                  sx={ styles.formControlLabelStyled }
-                />
-              </FormGroup>
-              <Divider variant="middle" sx={ styles.dividerStyle } />
+            <CustomDivider variant="middle" />
+              <Checkboxes checkboxStates={checkboxStates} setCheckboxStates={setCheckboxStates} />
+              <CustomDivider variant="middle" />
             <Typography
               sx={{...styles.formControlLabelStyled, paddingTop: "10px"}}
             >
@@ -281,14 +194,13 @@ function Generator() {
                   variant="contained"
                   sx={ styles.buttonStyled }
                   onClick={() =>
-                    /* when clicked, checks if at least one checkbox is checked (true). If at least one is checked then it calls the algorithm that generates the password, otherwise it set the error snack to true making him pop up in the screen */
                     [
                       checkboxStates.lower,
                       checkboxStates.upper,
                       checkboxStates.numbers,
                       checkboxStates.symbols,
                     ].every((value) => value === false)
-                      ? setOpenErrorSnack(true)
+                      ? setOpenSnacks({...openSnacks, error: true})
                       : [
                           setPassword(
                             algorithm(
@@ -307,7 +219,7 @@ function Generator() {
                   Generate
                 </StyledButton>
               </Tooltip>
-              <Divider variant="middle" sx={ styles.dividerStyle } />
+              <CustomDivider variant="middle" />
               <Tooltip
                 title={
                   !password
@@ -386,6 +298,12 @@ const styles = {
       },
     },
   },
+  formControlLabelStyled : {
+    "& .MuiTypography-root": {
+      fontFamily: "Poppins",
+      fontWeight: "300",
+    },
+  },
   modalBoxStyle : {
     position: "absolute",
     display: "flex",
@@ -402,22 +320,6 @@ const styles = {
     backgroundColor: "#ff5722",
     fontFamily: "JetBrains Mono",
     ":hover": { backgroundColor: "#d54111" },
-  },
-  dividerStyle : {
-    color: "#eee",
-    border: "1px solid",
-    marginTop: 1,
-  },
-  checkboxStyled : {
-    "&.Mui-checked": {
-      color: "#e65100",
-    },
-  },
-  formControlLabelStyled : {
-    "& .MuiTypography-root": {
-      fontFamily: "Poppins",
-      fontWeight: "300",
-    },
   },
   buttonsStyled : {
     display: "flex",
